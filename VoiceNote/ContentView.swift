@@ -43,7 +43,7 @@ var body: some View {
                     ContentUnavailableView("No recordings yet", systemImage: "waveform", description: Text("Tap the mic to start"))
                 }
                 ForEach(store.recordings) { rec in
-                    NavigationLink(destination: PlayerView(recording: rec)) {
+                    NavigationLink(destination: PlayerView(recording: rec).environmentObject(store)) {
                         HStack {
                             Image(systemName: "waveform")
                             VStack(alignment: .leading, spacing: 4) {

@@ -11,6 +11,8 @@ import SwiftUI
 struct PlayerView: View {
 let recording: Recording
 @StateObject private var player = AudioPlayer()
+@EnvironmentObject private var store: RecordingStore
+@Environment(\.dismiss) private var dismiss
 
 var body: some View {
     VStack(spacing: 32) {
@@ -77,6 +79,17 @@ var body: some View {
     .padding()
     .onAppear { player.load(url: recording.url) }
     .onDisappear { player.stop() }
+    .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                store.delete(recording)
+                dismiss()
+            } label: {
+                Image(systemName: "trash")
+            }
+            .accessibilityLabel("Delete Recording")
+        }
+    }
 }
 
 private func formatTime(_ seconds: Double) -> String {
