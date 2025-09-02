@@ -29,9 +29,22 @@
 		C9CEE6572E65C5FE00907B95 /* VoiceNoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceNoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C9CEE66B2E65C66100907B95 /* Exceptions for "VoiceNote" folder in "VoiceNote" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C9CEE63F2E65C5F800907B95 /* VoiceNote */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C9CEE6422E65C5F800907B95 /* VoiceNote */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C9CEE66B2E65C66100907B95 /* Exceptions for "VoiceNote" folder in "VoiceNote" target */,
+			);
 			path = VoiceNote;
 			sourceTree = "<group>";
 		};
@@ -400,6 +413,7 @@
 				DEVELOPMENT_TEAM = 8G587YVC55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +442,7 @@
 				DEVELOPMENT_TEAM = 8G587YVC55;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoiceNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
