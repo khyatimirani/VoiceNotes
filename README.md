@@ -49,16 +49,20 @@ open VoiceNotes.xcodeproj
 Run on a simulator or a physical device.
 
 📂 **Project Structure**
+
 VoiceNotes/
+
  ├── Models/
  │   ├── Recording.swift
  │   └── RecordingStore.swift
  ├── Views/
+ 
  │   ├── ContentView.swift
  │   ├── PlayerView.swift
  │   ├── WaveformView.swift
  │   └── RenameSheet.swift
  ├── Audio/
+ 
  │   └── AudioRecorder.swift
  ├── Resources/
  │   └── Assets.xcassets
