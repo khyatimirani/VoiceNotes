@@ -67,7 +67,9 @@ VoiceNotes/
  
  ├── Audio/
  
- │   └── AudioRecorder.swift
+  ├── AudioPlayer.swift
+ │   ├── AudioRecorder.swift
+ 
  ├── Resources/
  
  │   └── Assets.xcassets
