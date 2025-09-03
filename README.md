@@ -26,6 +26,7 @@ MVVM-ish Architecture – with AudioRecorder, RecordingStore, and PlayerView
 
 	
 🚀 **Getting Started**
+
 Prerequisites
 
 macOS with Xcode 15+
@@ -37,6 +38,7 @@ Installation
 Clone the repository:
 
 git clone https://github.com/khyatimirani/VoiceNotes.git
+
 cd VoiceNotes
 
 
