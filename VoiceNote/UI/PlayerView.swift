@@ -44,7 +44,6 @@ var body: some View {
         }
 
         // Playback controls
-        // Playback controls
         HStack(spacing: 40) {
             Button {
                 player.seek(to: max(0, player.progress - 0.05))
@@ -60,7 +59,7 @@ var body: some View {
                 }
             } label: {
                 Image(systemName: player.isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                    .font(.system(size: 72))
+                    .font(.system(size: 50))
                     .shadow(radius: 4)
             }
 
