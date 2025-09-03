@@ -55,32 +55,6 @@ var body: some View {
                                .transition(.opacity)
                                .animation(.easeInOut(duration: 0.2), value: recorder.elapsed)
                        }
-            
-//            if recorder.isRecording {
-//                WaveformView(levels: recorder.levels)
-//                    .frame(height: 120)
-//                    .background(Color.secondary.opacity(0.08))
-//                    .clipShape(RoundedRectangle(cornerRadius: 16))
-//                    .padding(.horizontal)
-//                    //.animation(.easeOut(duration: 0.15), value: recorder.levelHistory)
-//                    .transition(.opacity.combined(with: .scale))
-//                    .animation(.easeInOut(duration: 0.4), value: recorder.isRecording)
-//                      }
-//     
-//            // Record button
-//            Button(action: toggleRecording) {
-//                ZStack {
-//                    Circle()
-//                        .fill(recorder.isRecording ? Color.red : Color.accentColor)
-//                        .frame(width: 88, height: 88)
-//                        .shadow(radius: 8)
-//                    Image(systemName: recorder.isRecording ? "stop.fill" : "mic.fill")
-//                        .font(.system(size: 28))
-//                        .foregroundColor(.white)
-//                }
-//            }
-//            .padding(.bottom, 8)
-//            .accessibilityLabel(recorder.isRecording ? "Stop Recording" : "Start Recording")
 
             // List of recordings
             List {
