@@ -2,11 +2,12 @@ import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
-@StateObject private var store = RecordingStore()
-@StateObject private var recorder = AudioRecorder()
-@State private var isRecording = false
-@State private var showRename: Recording? = nil
-@State private var visibleCount = 5
+    @StateObject private var store = RecordingStore()
+    @StateObject private var recorder = AudioRecorder()
+    @State private var isRecording = false
+    @State private var showRename: Recording? = nil
+    @State private var visibleCount = 5
+    @State private var showRecordingToast = false
 
 var body: some View {
     NavigationView {
@@ -42,7 +43,7 @@ var body: some View {
                            }
                        }) {
                            Image(systemName: isRecording ? "stop.circle.fill" : "mic.circle.fill")
-                               .font(.system(size: 80))
+                               .font(.system(size: 50))
                                .foregroundColor(isRecording ? .red : .blue)
                                .shadow(radius: 6)
                        }
@@ -98,7 +99,14 @@ var body: some View {
                             }
                             Spacer()
                             Button {
-                                showRename = rec
+                                if isRecording {
+                                    showRecordingToast = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                        showRecordingToast = false
+                                    }
+                                } else {
+                                    showRename = rec
+                                }
                             } label: {
                                 Image(systemName: "pencil")
                             }
@@ -107,7 +115,14 @@ var body: some View {
                     }
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
-                            store.delete(rec)
+                            if isRecording {
+                                showRecordingToast = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                    showRecordingToast = false
+                                }
+                            } else {
+                                store.delete(rec)
+                            }
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -117,16 +132,47 @@ var body: some View {
                     HStack {
                         Spacer()
                         Button("Show more") {
-                            let newCount = visibleCount + 5
-                            visibleCount = min(newCount, store.recordings.count)
+                            if isRecording {
+                                showRecordingToast = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                    showRecordingToast = false
+                                }
+                            } else {
+                                let newCount = visibleCount + 5
+                                visibleCount = min(newCount, store.recordings.count)
+                            }
                         }
                         Spacer()
                     }
                 }
             }
             .listStyle(.insetGrouped)
+            .disabled(isRecording)
         }
         .navigationTitle("Voice Notes")
+        .overlay(
+            Group {
+                if showRecordingToast {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Image(systemName: "mic.fill")
+                                .foregroundColor(.red)
+                            Text("Please stop the recording to perform any further action")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(8)
+                        .padding(.bottom, 100)
+                    }
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 0.3), value: showRecordingToast)
+                }
+            }
+        )
     }
     .sheet(item: $showRename) { rec in
         RenameSheet(recording: rec) { newTitle in
