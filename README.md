@@ -55,16 +55,19 @@ VoiceNotes/
  ├── Models/
  │   ├── Recording.swift
  │   └── RecordingStore.swift
+ 
  ├── Views/
  
  │   ├── ContentView.swift
  │   ├── PlayerView.swift
  │   ├── WaveformView.swift
  │   └── RenameSheet.swift
+ 
  ├── Audio/
  
  │   └── AudioRecorder.swift
  ├── Resources/
+ 
  │   └── Assets.xcassets
  └── VoiceNotesApp.swift
 
